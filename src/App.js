@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       {loading && <p>Loading...</p>}
-      {error && <p>{error.message}</p>}
+      {error && <p>{error}</p>}
       {data && (
         <div>
           {data.map((user) => (
