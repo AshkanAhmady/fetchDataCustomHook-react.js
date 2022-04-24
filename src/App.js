@@ -1,24 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import useFetch from "./hook/useFetch";
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        setLoading(false);
-        setData(response.data);
-      })
-      .catch((errror) => {
-        setLoading(false);
-        setError(errror.message);
-      });
-  }, []);
+  // we give our URL => this hook give use (loading-error-data)
+  const { loading, error, data } = useFetch(
+    "https://jsonplaceholder.typicode.com/users"
+  );
 
   return (
     <div className="App">
